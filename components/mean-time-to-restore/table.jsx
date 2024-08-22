@@ -1,4 +1,4 @@
-//components/change-failure-rate/changeFailureRate.js
+'use client'
 
 import {
   Table,
@@ -8,21 +8,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { Orbit, CalendarCheck, Ticket } from "lucide-react"
+import { Orbit, CalendarCheck, Ticket, Timer } from "lucide-react"
 import { dateFormatter, dayFormatter } from '@/lib/date-funcs';
 
-export function ChangeFailureRateTable({ cfrData, appName }) {
-
-  // const { cfrData, loading } = useChangeFailureRate(appName, dateRange);
-  // console.log('Table cfrData: ', cfrData)
-
-  // if (loading) {
-  //   return <div>Loading...</div>; // Render loading state while data is being fetched
-  // }
-
-  if (!cfrData || cfrData.length === 0) {
-    return <div>No data available.</div>;
-  }
+export function MeanTimeToRestoreTable({ appName, mttrData }) {
 
   return (
     <Table>
@@ -30,11 +19,12 @@ export function ChangeFailureRateTable({ cfrData, appName }) {
         <TableRow>
           <TableHead>Ticket Reference</TableHead>
           <TableHead>App Name</TableHead>
-          <TableHead>Date Created</TableHead>
+          <TableHead>Time to Resolve</TableHead>
+          <TableHead>Date Resolved</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-      {cfrData.map (({ issue_id, timestamp }) => (
+        {mttrData.map (({ issue_id, time_to_resolve, timestamp }) => (
           <TableRow key={issue_id}>
             <TableCell>
               <div className="flex items-center gap-2">
@@ -44,6 +34,11 @@ export function ChangeFailureRateTable({ cfrData, appName }) {
             <TableCell>
               <div className="flex items-center gap-2">
                 <Orbit className="w-4 h-4" />{appName}
+              </div>
+            </TableCell>
+            <TableCell>
+              <div className="flex items-center gap-2">
+                <Timer className="w-4 h-4" /> {dayFormatter(time_to_resolve)}
               </div>
             </TableCell>
             <TableCell>
