@@ -1,5 +1,4 @@
 import { getDaysBetweenDates } from '@/lib/date-funcs';
-import { TabsTrigger } from "@/components/ui/tabs";
 import { MeanTimeToRestoreTabTrigger } from '@/components/mean-time-to-restore/tab-trigger';
 
 
