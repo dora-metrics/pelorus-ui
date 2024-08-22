@@ -1,5 +1,4 @@
 import { getDaysBetweenDates } from '@/lib/date-funcs';
-import { TabsTrigger } from "@/components/ui/tabs";
 import { LeadTimeForChangeTabTrigger } from '@/components/lead-time-for-change/tab-trigger';
 
 
