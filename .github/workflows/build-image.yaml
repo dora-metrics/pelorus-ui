@@ -16,7 +16,7 @@ jobs:
 # application using the source to image build strategy,
 # and pushes the image to quay.io.
     env:
-      IMAGE_NAME: pelorus-dashboard
+      IMAGE_NAME: pelorus-ui
       TAGS: dev ${{ github.sha }}
 
     steps:
