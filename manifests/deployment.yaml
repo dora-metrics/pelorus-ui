@@ -46,14 +46,16 @@ spec:
         - name: NEXTAUTH_SECRET
           value: +03/pWr4sFvxrcm29hwnXLREWjFfmW2toTCUyNcLytc=
         - name: NEXTAUTH_URL
-          value: https://pelorus-ui-pelorus-api.apps.cluster-kwcgn.kwcgn.sandbox558.opentlc.com/
+          value: https://pelorus-ui-pelorus-api.apps-crc.testing/
         - name: NODE_EXTRA_CA_CERTS
           value: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
         - name: OPENSHIFT_CLIENT_ID
           value: system:serviceaccount:pelorus-api:pelorus
         - name: PELORUS_API_URL
           value: http://pelorus-api.pelorus-api.svc.cluster.local
-        image: quay.io/etsauer/pelorus-ui:dev
+        - name: NODE_ENV
+          value: development
+        image: quay.io/etsauer/pelorus-ui:serverside-cleanup
         imagePullPolicy: Always
         ports:
         - containerPort: 3000

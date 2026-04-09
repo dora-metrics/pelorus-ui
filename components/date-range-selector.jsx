@@ -29,24 +29,26 @@ export function DateRangeSelector({}) {
   // If not, we default to the past 7 days
   const [dateRange, setDateRange] = useState(() => {
     console.log('Initializing activeDateRange');
-    const storedDateRange = localStorage.getItem('dateRange');
-    if (storedDateRange) {
-      console.log('Using stored date range');
-      // Parse the stored dateRange and convert dates back to Date objects
-      const parsedDateRange = JSON.parse(storedDateRange, (key, value) => {
-        if (key === 'from' || key === 'to') {
-          return new Date(value);
-        }
-        return value;
-      });
-      return parsedDateRange;
-    } else {
-      console.log('No stored date range found, using default');
-      const defaultDaysAgo = 7;
-      return {
-        from: subDays(new Date(), defaultDaysAgo),
-        to: new Date()
-      };
+    if (typeof window !== 'undefined') {
+      const storedDateRange = localStorage.getItem('dateRange');
+      if (storedDateRange) {
+        console.log('Using stored date range');
+        // Parse the stored dateRange and convert dates back to Date objects
+        const parsedDateRange = JSON.parse(storedDateRange, (key, value) => {
+          if (key === 'from' || key === 'to') {
+            return new Date(value);
+          }
+          return value;
+        });
+        return parsedDateRange;
+      } else {
+        console.log('No stored date range found, using default');
+        const defaultDaysAgo = 7;
+        return {
+          from: subDays(new Date(), defaultDaysAgo),
+          to: new Date()
+        };
+      }
     }
   });
 

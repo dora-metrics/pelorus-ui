@@ -41,7 +41,7 @@ export function LeadTimeForChangeTable({ ltfcData }) {
           <TableRow key={commit}>
             <TableCell>
               <div className="flex items-center gap-2">
-                <GitGraph className="w-4 h-4" /> <Link href={commit_link} target='_blank'>{commit}</Link>
+                <GitGraph className="w-4 h-4" /> <Link href="{commit_link}" target='_blank'>{commit}</Link>
               </div>
             </TableCell>
             <TableCell>
